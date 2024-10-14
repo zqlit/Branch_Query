@@ -1,19 +1,45 @@
-# demo02
+# 邮政网点查询
 
-## Project setup
-```
+## 描述
+这是一个用于查询邮政网点的项目，前端使用了 Vue.js。
+
+## 目录
+- [功能](#功能)
+- [项目设置](#项目设置)
+- [使用方法](#使用方法)
+- [贡献](#贡献)
+- [许可证](#许可证)
+- [联系方式](#联系方式)
+
+## 功能
+- 查询邮政网点
+- 用户友好的界面
+- 快速响应
+
+## 项目设置
+```bash
 npm install
 ```
 
-### Compiles and hot-reloads for development
-```
+## 使用方法
+### 开发环境编译和热加载
+```bash
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
+### 生产环境编译和压缩
+```bash
 npm run build
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### 配置自定义
+请参阅 [配置参考](https://cli.vuejs.org/config/)。
+
+## 贡献
+欢迎贡献！请 fork 本仓库并提交 pull request。
+
+## 许可证
+本项目采用 MIT 许可证，详情请参阅 [LICENSE](LICENSE) 文件。
+
+## 联系方式
+如有任何问题或建议，请联系项目维护者。
