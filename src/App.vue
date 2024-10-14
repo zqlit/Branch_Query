@@ -1,8 +1,13 @@
 <template>
   <div id="app">
     <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <ul>
+        <li><router-link to="/">登录页面</router-link></li>
+        <li><router-link to="/home">首页页面</router-link></li>
+        <li><router-link to="/news">新闻中心</router-link></li>
+        <li><router-link to="/social">社会责任</router-link></li>
+        <li><router-link to="/company">企业文化</router-link></li>
+      </ul>
     </nav>
     <router-view/>
   </div>
@@ -15,18 +20,27 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  margin-top: 60px;
 }
 
 nav {
-  padding: 30px;
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  li {
+    display: inline;
+    margin: 0 10px;
+  }
 
   a {
-    font-weight: bold;
-    color: #2c3e50;
+    text-decoration: none;
+    color: #42b983;
+  }
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+  a.router-link-exact-active {
+    font-weight: bold;
   }
 }
 </style>
