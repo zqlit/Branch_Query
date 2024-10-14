@@ -10,6 +10,11 @@ const routes = [
     component: () => import('@/views/LoginView.vue')
   },
   {
+    path: '/network',
+    name: 'network',
+    component: () => import('@/views/NetworkView.vue')
+  },
+  {
     path: '/home',
     name: 'Home',
     component: () => import('@/views/HomeView.vue')
