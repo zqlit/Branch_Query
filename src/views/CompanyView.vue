@@ -8,11 +8,12 @@
                         <ul>
                             <li @click="shouMe(1)"><span class="tu"><span><a href='#' target='_self' title=""><img
                                                 src='../assets/2012680033.png' alt='企业文化纲要' /></a></span></span><span
-                                    class="tit"><span id="CurrentlyNode">企业文化纲要</span></span></li>
+                                    class="tit"><span>企业文化纲要</span></span></li>
+
                             <li @click="shouMe(2)"><span class="tu"><span><a href='#' target='_self' title=""><img
                                                 src='../assets/2012680032.png' alt='企业文化建设' /></a></span></span><span
-                                    class="tit"><span id="NodeTitle"><a href='/html1/category/181312/8530-1.htm'
-                                            target='_self' title="企业文化建设">企业文化建设</a></span></span></li>
+                                    class="tit"><span id="NodeTitle"><a href='#' target='_self'
+                                            title="企业文化建设">企业文化建设</a></span></span></li>
                         </ul>
                     </div>
                 </div>
@@ -58,11 +59,95 @@
                                 id='ReportIDIssueTime'>2018-10-19</span></li>
                     </ul>
                 </div>
-
             </div>
-            <div id="Content2" v-show="nowNum == 2">111</div>
-        </div>
+            <div id="Content3" v-show="nowNum == 2">
+                <div class="new_list">
+                    <ul>
+                        <li><span id='ReportIDname'><a href='/html1/report/2410/3786-1.htm' target='_blank'
+                                    title="以特色企业文化建设为高质量发展提供不竭动力">以特色企业文化建设为高质量发展提供不竭动力</a></span><span
+                                id='ReportIDIssueTime'>2024-10-12</span></li>
+                        <li><span id='ReportIDname'><a href='/html1/report/24091/847-1.htm' target='_blank'
+                                    title="深入践行核心价值导向 助力企业高质量发展取得新突破">深入践行核心价值导向 助力企业高质量发展取得新突破</a></span><span
+                                id='ReportIDIssueTime'>2024-09-23</span></li>
+                        <li><span id='ReportIDname'><a href='/html1/report/2409/5262-1.htm' target='_blank'
+                                    title="夯实基础 增强合力 助力培育高质量发展新质生产力">夯实基础 增强合力 助力培育高质量发展新质生产力</a></span><span
+                                id='ReportIDIssueTime'>2024-09-10</span></li>
+                        <li><span id='ReportIDname'><a href='/html1/report/2409/1296-1.htm' target='_blank'
+                                    title="高点对标 敢做善成 奋力实现高质量发展">高点对标 敢做善成 奋力实现高质量发展</a></span><span
+                                id='ReportIDIssueTime'>2024-09-03</span></li>
+                        <li><span id='ReportIDname'><a href='/html1/report/24081/6047-1.htm' target='_blank'
+                                    title="强化党建引领 弘扬企业文化 推动高质量发展">强化党建引领 弘扬企业文化 推动高质量发展</a></span><span
+                                id='ReportIDIssueTime'>2024-08-27</span></li>
+                        <li><span id='ReportIDname'><a href='/html1/report/24081/2112-1.htm' target='_blank'
+                                    title="以企业文化自信助推高质量转型发展">以企业文化自信助推高质量转型发展</a></span><span
+                                id='ReportIDIssueTime'>2024-08-20</span></li>
+                        <li><span id='ReportIDname'><a href='/html1/report/2408/8992-1.htm' target='_blank'
+                                    title="求是求实修炼文化“内功” 自强不息谱写发展新篇">求是求实修炼文化“内功” 自强不息谱写发展新篇</a></span><span
+                                id='ReportIDIssueTime'>2024-08-14</span></li>
+                        <li><span id='ReportIDname'><a href='/html1/report/2407/6347-1.htm' target='_blank'
+                                    title="聚焦“两个一切” 增强“文化五力”">聚焦“两个一切” 增强“文化五力”</a></span><span
+                                id='ReportIDIssueTime'>2024-07-09</span></li>
+                        <li><span id='ReportIDname'><a href='/html1/report/24061/4218-1.htm' target='_blank'
+                                    title="企业文化提振精气神 聚力推动高质量发展">企业文化提振精气神 聚力推动高质量发展</a></span><span
+                                id='ReportIDIssueTime'>2024-06-24</span></li>
+                        <li><span id='ReportIDname'><a href='/html1/report/24061/679-1.htm' target='_blank'
+                                    title="坚持文化引领　以“三个激发”增强企业高质量发展新动能">坚持文化引领　以“三个激发”增强企业高质量发展新动能</a></span><span
+                                id='ReportIDIssueTime'>2024-06-18</span></li>
+                        <li><span id='ReportIDname'><a href='/html1/report/2406/1521-1.htm' target='_blank'
+                                    title="推动党建与企业文化建设深度融合">推动党建与企业文化建设深度融合</a></span><span
+                                id='ReportIDIssueTime'>2024-06-04</span></li>
+                        <li><span id='ReportIDname'><a href='/html1/report/24051/7542-1.htm' target='_blank'
+                                    title="为精细化管理注入深沉持久的文化力量">为精细化管理注入深沉持久的文化力量</a></span><span
+                                id='ReportIDIssueTime'>2024-05-28</span></li>
+                        <li><span id='ReportIDname'><a href='/html1/report/24051/2743-1.htm' target='_blank'
+                                    title="打造高效执行文化 助力企业高质量发展">打造高效执行文化 助力企业高质量发展</a></span><span
+                                id='ReportIDIssueTime'>2024-05-21</span></li>
+                        <li><span id='ReportIDname'><a href='/html1/report/24041/8367-1.htm' target='_blank'
+                                    title="以客户为中心求是求实谋发展　以创新为驱动自强不息谱新篇">以客户为中心求是求实谋发展　以创新为驱动自强不息谱新篇</a></span><span
+                                id='ReportIDIssueTime'>2024-04-30</span></li>
+                        <li><span id='ReportIDname'><a href='/html1/report/24041/3509-1.htm' target='_blank'
+                                    title="深入学习贯彻习近平文化思想 以高质量企业文化建设推动中邮证券高质量发展">深入学习贯彻习近平文化思想
+                                    以高质量企业文化建设推动中邮证券高质量发展</a></span><span id='ReportIDIssueTime'>2024-04-23</span></li>
+                        <li><span id='ReportIDname'><a href='/html1/report/24041/3508-1.htm' target='_blank'
+                                    title="集团公司直属机关健步走比赛成功举办">集团公司直属机关健步走比赛成功举办</a></span><span
+                                id='ReportIDIssueTime'>2024-04-23</span></li>
+                        <li><span id='ReportIDname'><a href='/html1/report/24032/7540-1.htm' target='_blank'
+                                    title="职工心中的温暖小家">职工心中的温暖小家</a></span><span id='ReportIDIssueTime'>2024-03-29</span>
+                        </li>
+                        <li><span id='ReportIDname'><a href='/html1/report/24016/144-1.htm' target='_blank'
+                                    title="凝聚“十力”践行十大价值观">凝聚“十力”践行十大价值观</a></span><span
+                                id='ReportIDIssueTime'>2024-01-29</span></li>
+                        <li><span id='ReportIDname'><a href='/html1/report/24015/5177-1.htm' target='_blank'
+                                    title="坚持问题导向育文化促发展">坚持问题导向育文化促发展</a></span><span
+                                id='ReportIDIssueTime'>2024-01-22</span></li>
+                        <li><span id='ReportIDname'><a href='/html1/report/2401/7020-1.htm' target='_blank'
+                                    title="以企业文化筑牢寄递高质量发展根基">以企业文化筑牢寄递高质量发展根基</a></span><span
+                                id='ReportIDIssueTime'>2024-01-09</span></li>
+                        <!-- <li id='PageNum'>
+                        </li> -->
+                    </ul>
+                </div>
+                <div id='ali' style="text-align: center;">
+                    <a href="#">1 </a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#">4</a>
+                    <a href="#">5</a>
+                    <a href="#">6</a>
+                    <a href="#">7</a>
+                    <a href="#">8</a>
+                    <a href="#">9</a>
+                    <a href="#">10</a>
+                    <a href="#">下一页</a>
+                    <a href="#" id="CBLast">最后</a>
+                    <span id='go'>
+                        <input size='4' maxlength='4' />
+                        <input type='button' value='GO'>
+                    </span>
+                </div>
+            </div>
 
+        </div>
     </div>
 </template>
 
@@ -71,12 +156,14 @@ export default {
     name: 'CompanyView',
     data() {
         return {
-            nowNum: 1
+            nowNum: 1,
+            addBlack: false
         };
     },
     methods: {
         shouMe(value) {
             this.nowNum = value;
+            this.addBlack = !this.addBlack;
         }
     },
     computed: {
@@ -108,6 +195,10 @@ body {
     width: 282px;
     float: left;
 }
+
+/* .about_nav li:hover {
+    font-weight: 600;
+} */
 
 .fgj {
     display: block;
@@ -219,5 +310,66 @@ img {
     float: right;
     color: #8E8E92;
     font-size: 12px;
+}
+
+li#PageNum,
+#ali {
+    width: 100%;
+    text-align: center;
+    background: none;
+    padding-top: 30px;
+    height: 40px;
+    /* margin-top: 30px; */
+}
+
+li#PageNum::before {
+    display: none;
+}
+
+li#PageNum span,
+li#PageNum a,
+#ali a {
+    padding: 4px 9px;
+    border: 1px solid #EAEAEE;
+    border-radius: 4px;
+    text-decoration: none;
+    /* 取消下划线 */
+    color: #333;
+    /* 设置默认颜色 */
+}
+
+li#PageNum span,
+#ali span {
+    background: #18AE66;
+    color: #FFFFFF;
+    border-radius: 4px;
+    border: 0;
+}
+
+li#PageNum #go,
+#ali #go {
+    padding: 0;
+    background: none;
+    border: 0px;
+    margin: 0;
+    border-radius: 0;
+    position: relative;
+    top: -3px;
+}
+
+li#PageNum #go input,
+#ali #go input {
+    height: 29px;
+    border: 1px solid #EAEAEE;
+    border-radius: 4px;
+}
+
+li#PageNum #go input[type="button"],
+#ali #go input[type="button"] {
+    height: 29px;
+    margin-left: 4px;
+    font-size: 14px;
+    color: #8E8E92;
+    padding: 0px 8px;
 }
 </style>
