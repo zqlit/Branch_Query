@@ -342,7 +342,7 @@ nav {
   height: 4px;
   background: #18AE66;
   border-radius: 2px;
-  position: absolute;
+  position: relative;
   bottom: -12px;
   left: 38%;
 }
