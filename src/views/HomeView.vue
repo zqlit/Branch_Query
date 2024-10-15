@@ -655,6 +655,7 @@
                 </div>
             </div>
         </div>
+        <div data-v-9ea40744="" style="width: 1200px; height: 40px; clear: both; overflow: hidden;"></div>
     </div>
 </template>
 
@@ -763,13 +764,12 @@ export default {
         })
 
         //初始化幻灯片插件
-
         var swiper = new Swiper('.swiper-container', {
             slidesPerView: 2,
             slidesPerColumn: 2,
             spaceBetween: 30,
             autoplay: {
-                delay: 50,
+                delay: 500,
                 disableOnInteraction: true,
             },
             pagination: {
@@ -1093,7 +1093,7 @@ a {
     float: right;
     width: 18px;
     height: 10px;
-    background: url() no-repeat left top;
+    background: url("#") no-repeat left top;
     margin: 6px 0 0 6px;
 }
 
@@ -2068,4 +2068,22 @@ button.swiper-pagination-bullet {
     -ms-perspective: 1200px
 }
 
+.qr_code img {
+    width: 78px;
+    height: 78px;
+}
+
+.qr_code .swiper-slide p {
+    text-align: center;
+}
+
+.qr_code .swiper-slide span {
+    font-size: 14px;
+    text-align: center;
+    display: block;
+}
+
+.qr_code .swiper-container-horizontal>.swiper-pagination-bullets {
+    bottom: -25px;
+}
 </style>

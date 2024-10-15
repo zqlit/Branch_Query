@@ -64,15 +64,20 @@
         </div>
         <hr class="foot" v-show="showFoot">
       </div>
-      <div class="content">
-      <router-view />
+      <div class="content" :class="contentClass">
+        <router-view />
       </div>
     </div>
-   
+    <div class="footer-father">
+      <div class="footer-main">
+        <FooterView />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import FooterView from './views/FooterView.vue';
 export default {
   name: 'App',
   data() {
@@ -90,6 +95,14 @@ export default {
       this.showFoot = to.path !== '/';
     }
   },
+  computed: {
+    contentClass() {
+      return this.$route.path === '/login' ? 'content-full-width' : 'content';
+    }
+  },
+  components: {
+    FooterView
+  }
 };
 
 </script>
@@ -334,13 +347,51 @@ nav {
   position: relative;
 }
 
-.active{
+.active {
   color: #18AE66;
   position: relative;
 }
 
 .content {
   width: 1200px;
+  height: 100%;
   margin: 0 auto;
+}
+
+.footer {
+  width: 100%;
+  margin: 0 auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+.footer-main {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.content-full-width {
+  width: 100%;
+}
+
+.footer-father {
+  // position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #f8f8f8;
+  box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.footer-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 20px;
 }
 </style>
