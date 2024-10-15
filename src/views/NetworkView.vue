@@ -36,13 +36,13 @@
                 <div style="display: flex; align-items: center;">
                     <label for="addr-show" style="margin-left: auto; margin-right: 10px;">
                         服务网点名称：
-                        <input type="text" v-model="submit.addrShow" id="addr-show" readonly>
+                        <input type="text" >
                     </label>
                 </div>
 
                 <!-- 确定按钮 -->
                 <div style="display: flex; align-items: center;">
-                    <button type="submit" class="btn met1" :disabled="!canSubmit" style="margin-left: auto;">查询</button>
+                    <button type="submit" style="margin-left: auto;">查询</button>
                 </div>
             </form>
         </div>
@@ -50,8 +50,8 @@
 
 
 
-        <!-- 表格 -->
-        <div class="container">
+         <!-- 表格 -->
+         <div class="container">
             <table class="centered-table">
                 <thead>
                     <tr>
@@ -67,7 +67,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="(branch, index) in branches" :key="index"
+                    <tr v-for="(branch, index) in filteredBranches" :key="index"
                         :class="{ 'even-row': index % 2 === 0, 'odd-row': index % 2 !== 0 }">
                         <td>{{ branch.province }}</td>
                         <td>{{ branch.city }}</td>
@@ -103,7 +103,7 @@
             </span>
         </div>
     </div>
-    </div>
+
 
 </template>
 
@@ -225,6 +225,8 @@ export default {
                     businessHours: '09:00-17:00'
                 }
             ]
+            ,
+            filteredBranches: []
         };
     },
     computed: {
@@ -249,20 +251,42 @@ export default {
         showCity() {
             this.submit.addrShow = '';
             this.current.country = '';
-
+             
         },
         showCountry() {
             this.submit.addrShow = '';
+            
         },
         selecCountry() {
             this.submit.addrShow = `${this.current.prov}-${this.current.city}-${this.current.country}`;
+            
         },
         showAddr() {
-            this.submit.addrShow = `${this.current.prov}-${this.current.city}-${this.current.country}`;
+            this.filterBranches();
+            
+        },
+        filterBranches() {
+            let query = this.submit.addrShow.split('-').filter(Boolean); // 移除空字符串
+            let filtered = this.branches.filter(branch => {
+                // 检查省市区是否匹配
+                if (query[0] && branch.province !== query[0]) return false;
+                if (query[1] && branch.city !== query[1]) return false;
+                if (query[2] && branch.county !== query[2]) return false;
+
+                // 如果有网点名称，则检查名称是否包含
+                if (query.length > 3) {
+                    return branch.name.includes(query[3]);
+                }
+
+                return true;
+            });
+
+            this.filteredBranches = filtered;
         }
     },
     mounted() {
-
+        
+        this.filterBranches(); // 初始化时过滤一次
     }
 };
 </script>
