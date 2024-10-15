@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="container">
-      <div class="top-bar">
+      <div class="top-bar" v-show="showHeader">
         <div class="top-bar-left">
 
         </div>
@@ -39,7 +39,7 @@
           </template>
         </div>
       </div>
-      <div class="head">
+      <div class="head" v-show="showHeader">
         <div class="main-nav">
           <div class="logo">
             <div class="logo_20"><a href="/html1/folder/181312/8171-1.htm"><img
@@ -48,9 +48,9 @@
           <div class="nav">
             <nav>
               <ul>
-                <li class="active"><router-link to="/">登录页面</router-link></li>
+                <li class="active"><router-link to="/">首页页面</router-link></li>
                 <li><router-link to="/network">网点查询</router-link></li>
-                <li><router-link to="/home">首页页面</router-link></li>
+                <li><router-link to="/login">登录页面</router-link></li>
                 <li><router-link to="/news">新闻中心</router-link></li>
                 <li><router-link to="/social">社会责任</router-link></li>
                 <li><router-link to="/company">企业文化</router-link></li>
@@ -69,6 +69,26 @@
     <router-view />
   </div>
 </template>
+
+<script>
+export default {
+  name: 'App',
+  data() {
+    return {
+      showHeader: true
+    };
+  },
+  methods: {
+
+  },
+  watch: {
+    $route(to) {
+      this.showHeader = to.path !== '/login';
+    }
+  },
+};
+
+</script>
 
 <style lang="less">
 /* 全局样式重置 */
