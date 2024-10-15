@@ -62,11 +62,13 @@
             <button>搜索</button>
           </div>
         </div>
-        <hr class="foot">
+        <hr class="foot" v-show="showFoot">
+      </div>
+      <div class="content">
+      <router-view />
       </div>
     </div>
-
-    <router-view />
+   
   </div>
 </template>
 
@@ -75,7 +77,8 @@ export default {
   name: 'App',
   data() {
     return {
-      showHeader: true
+      showHeader: true,
+      showFoot: true
     };
   },
   methods: {
@@ -84,6 +87,7 @@ export default {
   watch: {
     $route(to) {
       this.showHeader = to.path !== '/login';
+      this.showFoot = to.path !== '/';
     }
   },
 };
@@ -333,5 +337,10 @@ nav {
 .active{
   color: #18AE66;
   position: relative;
+}
+
+.content {
+  width: 1200px;
+  margin: 0 auto;
 }
 </style>
