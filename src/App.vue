@@ -64,7 +64,7 @@
         </div>
         <hr class="foot" v-show="showFoot">
       </div>
-      <div class="content">
+      <div class="content" :class="contentClass">
       <router-view />
       </div>
       <div class="footer">
@@ -94,6 +94,11 @@ export default {
     $route(to) {
       this.showHeader = to.path !== '/login';
       this.showFoot = to.path !== '/';
+    }
+  },
+  computed: {
+    contentClass() {
+      return this.$route.path === '/login' ? 'content-full-width' : 'content';
     }
   },
   components: {
@@ -367,5 +372,9 @@ li{
 .footer-main{
   width: 1200px;
   margin: 0 auto;
+}
+
+.content-full-width {
+  width: 100%;
 }
 </style>
