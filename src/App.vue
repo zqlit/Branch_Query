@@ -67,12 +67,18 @@
       <div class="content">
       <router-view />
       </div>
+      <div class="footer">
+        <div class="footer-main">
+          <FooterView />
+        </div>
+      </div>
     </div>
    
   </div>
 </template>
 
 <script>
+import FooterView from './views/FooterView.vue';
 export default {
   name: 'App',
   data() {
@@ -90,6 +96,9 @@ export default {
       this.showFoot = to.path !== '/';
     }
   },
+  components: {
+    FooterView
+  }
 };
 
 </script>
@@ -340,6 +349,22 @@ nav {
 }
 
 .content {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.footer {
+  width: 100%;
+  margin: 0 auto;
+}
+
+a{
+  text-decoration: none;
+}
+li{
+  list-style: none;
+}
+.footer-main{
   width: 1200px;
   margin: 0 auto;
 }
