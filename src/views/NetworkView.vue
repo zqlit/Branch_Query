@@ -5,7 +5,7 @@
         <div style="height: 50px; background-color: #f2f2f2; margin-bottom: 20px;">
             <form @submit.prevent="showAddr" style="display: flex; justify-content: space-between; height: 100%;">
                 <!-- 省份选择 -->
-                <div style="display: flex; align-items: center; height: 100%;">
+                <div class="select-box">
                     <select id="prov" v-model="current.prov" @change="showCity()">
                         <option value="">-------------</option>
                         <option v-for="(province, index) in provinces" :key="index" :value="province.name">
@@ -38,7 +38,8 @@
 
                 <!-- 确定按钮 -->
                 <div style="display: flex; align-items: center;">
-                    <button type="submit" style="margin-left: auto;">查询</button>
+                    <button type="submit"
+                        style="margin-left: auto; margin-right: 20px; padding: 3px 15px; background: #009966; color: #fff; border-radius: 5px; border: none;">查询</button>
                 </div>
             </form>
         </div>
@@ -77,19 +78,20 @@
         </div>
 
         <!-- 分页 -->
+        <!-- 分页 -->
         <div id='ali' style="text-align: center;">
-            <a href="#">1 </a>
-            <a href="#">2</a>
-            <a href="#">3</a>
-            <a href="#">4</a>
-            <a href="#">5</a>
-            <a href="#">6</a>
-            <a href="#">7</a>
-            <a href="#">8</a>
-            <a href="#">9</a>
-            <a href="#">10</a>
-            <a href="#">下一页</a>
-            <a href="#" id="CBLast">最后</a>
+            <a href="#" style="margin: 0 4px;">1</a>
+            <a href="#" style="margin: 0 4px;">2</a>
+            <a href="#" style="margin: 0 4px;">3</a>
+            <a href="#" style="margin: 0 4px;">4</a>
+            <a href="#" style="margin: 0 4px;">5</a>
+            <a href="#" style="margin: 0 4px;">6</a>
+            <a href="#" style="margin: 0 4px;">7</a>
+            <a href="#" style="margin: 0 4px;">8</a>
+            <a href="#" style="margin: 0 4px;">9</a>
+            <a href="#" style="margin: 0 4px;">10</a>
+            <a href="#" style="margin: 0 4px;">下一页</a>
+            <a href="#" id="CBLast" style="margin: 0 4px;">最后</a>
             <span id='go'>
                 <input size='4' maxlength='4' />
                 <input type='button' value='GO'>
@@ -403,5 +405,16 @@ h2 {
     text-align: center;
     font-weight: 600;
     color: #499967;
+}
+
+.select-box {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.select-box select {
+    margin: 0 3px;
+    /* 设置左右边距为 3px */
 }
 </style>
