@@ -1,10 +1,6 @@
 <template>
     <div class="network-view">
-        <h2>
-
-            网点查询
-
-        </h2>
+        <h2>网点查询</h2>
 
         <div style="height: 50px; background-color: #f2f2f2; margin-bottom: 20px;">
             <form @submit.prevent="showAddr" style="display: flex; justify-content: space-between; height: 100%;">
@@ -36,7 +32,7 @@
                 <div style="display: flex; align-items: center;">
                     <label for="addr-show" style="margin-left: auto; margin-right: 10px;">
                         服务网点名称：
-                        <input type="text" >
+                        <input type="text" v-model="submit.addrName">
                     </label>
                 </div>
 
@@ -47,11 +43,8 @@
             </form>
         </div>
 
-
-
-
-         <!-- 表格 -->
-         <div class="container">
+        <!-- 表格 -->
+        <div class="container">
             <table class="centered-table">
                 <thead>
                     <tr>
@@ -103,8 +96,6 @@
             </span>
         </div>
     </div>
-
-
 </template>
 
 <script>
@@ -251,31 +242,35 @@ export default {
         showCity() {
             this.submit.addrShow = '';
             this.current.country = '';
-             
+
         },
         showCountry() {
             this.submit.addrShow = '';
-            
+
         },
         selecCountry() {
             this.submit.addrShow = `${this.current.prov}-${this.current.city}-${this.current.country}`;
-            
+
         },
         showAddr() {
             this.filterBranches();
-            
+
         },
         filterBranches() {
-            let query = this.submit.addrShow.split('-').filter(Boolean); // 移除空字符串
+            let query = [this.current.prov, this.current.city, this.current.country];
+            let addrName = this.submit.addrName;
+
+            // 过滤逻辑
             let filtered = this.branches.filter(branch => {
                 // 检查省市区是否匹配
                 if (query[0] && branch.province !== query[0]) return false;
                 if (query[1] && branch.city !== query[1]) return false;
                 if (query[2] && branch.county !== query[2]) return false;
 
-                // 如果有网点名称，则检查名称是否包含
-                if (query.length > 3) {
-                    return branch.name.includes(query[3]);
+                // 如果有服务网点名称，则检查名称是否包含
+                if (addrName) {
+                    const regex = new RegExp(addrName, 'i'); // 创建不区分大小写的正则表达式
+                    return regex.test(branch.name);
                 }
 
                 return true;
@@ -285,7 +280,7 @@ export default {
         }
     },
     mounted() {
-        
+
         this.filterBranches(); // 初始化时过滤一次
     }
 };
