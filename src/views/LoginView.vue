@@ -33,26 +33,11 @@
                                     href="http://211.156.200.95:8081/">包裹代投自提系统</a>
                             </li>
                         </ul>
-                        <!-- <script type="text/javascript">
-						var vCustomerPane = document.getElementById("CustomerPane");
-						var vCustomerUL = document.getElementById("CustomerUL");
-						vCustomerPane.onmouseover = function() {
-							vCustomerUL.style.display = "block";
-						}
-						vCustomerPane.onmouseout = function() {
-							vCustomerUL.style.display = "none";
-						}
-						vCustomerUL.onmouseover = function() {
-							vCustomerUL.style.display = "block";
-						}
-						vCustomerUL.onmouseout = function() {
-							vCustomerUL.style.display = "none";
-						}
-					</script> -->
+
                     </li>
                 </ul>
                 <ul id="uRight">
-                    <li id="__id_div_login"><a href="javascript:gotoOnway('https://passport.11185.cn/cas/login');">请登录</a>
+                    <li id="__id_div_login"><a href="http://localhost:8080/login">请登录</a>
                     </li>
                     <li id="__id_div_user" style="display:none;font-weight: 600;">
                         <span id="__id_span_user"></span>&nbsp;&nbsp;
@@ -60,65 +45,11 @@
                             href="javascript:self.location.href=cpsso.getLogoutUrl('https://passport.11185.cn/cas/login');">退出</a>
                     </li>
                     <li>|</li>
-                    <li><a href="javascript:gotoOnway('https://passport.11185.cn/cas/register');">快速注册</a></li>
+                    <li><a href="https://passport.11185.cn/cas/register?service=https%3A%2F%2Fmall.11185.cn">快速注册</a></li>
                     <li>|</li>
-                    <li style="z-index: 9999; position: relative;">
+                    <li style="z-index: 9999; position: relative;" id="mobilePane" @mouseover="showMenu"
+                        @mouseout="hideMenu">
                         <span><i class="icon-small icon-phone"></i><a id="mobilePane" href="javascript:;">手机版</a></span>
-                        <ul id="mobileUL" class="dropdownPhone" style="display: none;">
-                            <li class="post_phone"><i class="el-icon-caret-top"></i></li>
-                            <li class="post_phone_top">
-                                <div class="post_phone_top_left">
-                                    <img src="https://passport.11185.cn/cas/images/appstore.png" alt="">
-                                </div>
-                                <div class="post_phone_top_right">
-                                    <ul>
-                                        <li class="post_phone_liOne">中国邮政APP</li>
-                                        <li class="post_phone_liTwo">
-                                            <a target="_blank"
-                                                href="https://a.app.qq.com/o/simple.jsp?pkgname=com.wisentsoft.chinapost.android">扫一扫下载</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="post_phone_bottom">
-                                <div class="post_phone_top_left">
-                                    <img src="https://passport.11185.cn/cas/images/weixin.png" alt="">
-                                </div>
-                                <div class="post_phone_top_right">
-                                    <ul>
-                                        <li class="post_phone_liOne">中国邮政微邮局</li>
-                                        <li class="post_phone_liTwo">扫一扫关注</li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="post_phone_top">
-                                <div class="post_phone_top_left">
-                                    <img src="https://passport.11185.cn/cas/images/weixinmini.png" alt="">
-                                </div>
-                                <div class="post_phone_top_right">
-                                    <ul>
-                                        <li class="post_phone_liOne">中国邮政商城</li>
-                                        <li class="post_phone_liTwo">扫一扫逛商城</li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
-                        <!-- <script type="text/javascript">
-						var vMobilePane = document.getElementById("mobilePane");
-						var vMobileUL = document.getElementById("mobileUL");
-						vMobilePane.onmouseover = function() {
-							vMobileUL.style.display = "block";
-						}
-						vMobilePane.onmouseout = function() {
-							vMobileUL.style.display = "none";
-						}
-						vMobileUL.onmouseover = function() {
-							vMobileUL.style.display = "block";
-						}
-						vMobileUL.onmouseout = function() {
-							vMobileUL.style.display = "none";
-						}				
-					</script> -->
                     </li>
                 </ul>
             </div>
@@ -180,8 +111,7 @@
                                 <p class="zhuce" style="margin: 20px 16px 10px 0px">
 
 
-                                    <a href="javascript:gotoOnway('https://passport.11185.cn/cas/forgetPwd');"
-                                        style="border:0">忘记密码</a>
+                                    <a href="#" style="border:0">忘记密码</a>
                                     <a href="javascript:gotoOnway('https://passport.11185.cn/cas/register');"
                                         style="border:0; padding:0">快速注册</a>
                                 </p>
@@ -348,16 +278,29 @@ export default {
     name: 'LoginView',
     data() {
         return {
-
+            isMenuVisible: false,
         };
     },
     methods: {
+        showMenu() {
+            this.isMenuVisible = true;
+        },
+        hideMenu() {
+            this.isMenuVisible = false;
+        }
 
     }
 };
 </script>
 
 <style scoped>
+.login-view {
+    background: #fff !important;
+    min-height: 100%;
+    position: relative;
+    display: block;
+}
+
 body,
 h1,
 h2,
@@ -417,9 +360,10 @@ a {
 
 /* 头部 */
 header {
-    background: #F6F6FA;
+    background-color: #F6F6FA;
     display: block;
     unicode-bidi: isolate;
+    width: 100%;
 }
 
 header div {
@@ -431,21 +375,13 @@ header div {
     color: #8E8E92;
 }
 
-ul#uLeft {
-    float: left;
-}
-
 ul {
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
-ul#uLeft li,
-ul#uRight li {
-    float: left;
-    padding: 0px 10px;
-}
+
 
 header ul a {
     color: #8E8E92;
@@ -473,8 +409,18 @@ i {
     padding-top: 10px;
 }
 
-ul#uRight {
-    float: right;
+.dropdownPhone {
+    position: absolute;
+    background: #eee;
+    width: 200px;
+    height: 335px;
+    right: 0;
+}
+
+.post_phone_top_left {
+    margin: 0;
+    line-height: 1;
+    float: left;
 }
 
 .icon-phone {
@@ -483,6 +429,61 @@ ul#uRight {
     width: 14px;
     height: 12px;
     top: 2px;
+}
+
+ul#uRight li .dropdownPhone li {
+    float: inherit;
+    padding: 0;
+}
+
+ul#uRight {
+    float: right;
+}
+
+ul#uLeft {
+    float: left;
+}
+
+ul#uLeft li,
+ul#uRight li {
+    float: left;
+    padding: 0px 10px;
+}
+
+
+.el-icon-caret-top {
+    font-family: element-icons !important;
+    speak: none;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    vertical-align: baseline;
+    display: inline-block;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    opacity: 0.0;
+}
+
+.post_phone_top {
+    height: 100px;
+    border-bottom: 1px solid #f2f2f2;
+    padding: 10px !important;
+    padding-bottom: 0 !important;
+}
+
+.post_phone_top_left,
+.post_phone_top_left img {
+    width: 90px;
+    height: 90px;
+    display: inline-block;
+}
+
+.post_phone_top_left {
+    margin: 0;
+    line-height: 1;
+    float: left;
 }
 
 .content {
