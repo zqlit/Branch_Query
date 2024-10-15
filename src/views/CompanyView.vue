@@ -6,11 +6,11 @@
                     <div class="fgj">企业文化</div>
                     <div class="about_nav">
                         <ul>
-                            <li><span class="tu"><span><a href='/html1/category/181312/8528-1.htm' target='_self'
+                            <li @click="shouMe(1)"><span class="tu"><span><a href='#' target='_self'
                                             title=""><img src='../assets/2012680033.png'
                                                 alt='企业文化纲要' /></a></span></span><span class="tit"><span
                                         id="CurrentlyNode">企业文化纲要</span></span></li>
-                            <li><span class="tu"><span><a href='/html1/category/181312/8530-1.htm' target='_self'
+                            <li @click="shouMe(2)"><span class="tu"><span><a href='#' target='_self'
                                             title=""><img src='../assets/2012680032.png'
                                                 alt='企业文化建设' /></a></span></span><span class="tit"><span id="NodeTitle"><a
                                             href='/html1/category/181312/8530-1.htm' target='_self'
@@ -19,7 +19,7 @@
                     </div>
                 </div>
             </div>
-            <div id="Content3">
+            <div id="Content3" v-show="nowNum == 1">
                 <div class="new_list">
                     <ul>
                         <li>
@@ -62,7 +62,7 @@
                 </div>
 
             </div>
-            <div id="Content2"></div>
+            <div id="Content2" v-show="nowNum == 2">111</div>
         </div>
 
     </div>
@@ -73,11 +73,13 @@ export default {
     name: 'CompanyView',
     data() {
         return {
-
+            nowNum: 1
         };
     },
     methods: {
-
+        shouMe(value) {
+            this.nowNum = value;
+        }
     },
     computed: {
 
