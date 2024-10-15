@@ -23,7 +23,7 @@
                 <li><img src="	https://www.chinapost.com.cn/res/ChinaPostJT/structure/2012677357.png"><a
                         href="http://www.cnpsec.com.cn/main/index.html" target="_blank">证券业务</a></li>
                 <li style="margin:0;"><img
-                        src="	https://www.chinapost.com.cn/res/ChinaPostJT/structure/2012677357.png"><a
+                        src="https://www.chinapost.com.cn/res/ChinaPostJT/structure/2012677358.png"><a
                         href="http://www.ule.com/" target="_blank">网上商城</a></li>
             </ul>
         </div>
@@ -341,16 +341,16 @@
             <!-- 代码部分begin -->
             <div class="wrap2">
                 <div class="tabs2">
-                    <a href="/html1/category/181312/8358-1.htm" hidefocus="true" class="">信息公告</a>
-                    <a href="/html1/category/2401/2776-1.htm" hidefocus="true" class="">邮资票品发行信息</a>
-                    <a href="/html1/folder/181313/7289-1.htm" hidefocus="true" class="">采购公告公示</a>
-                    <a href="/html1/category/181312/8361-1.htm" hidefocus="true" class="active2">预决算公开</a>
+                    <a href="/html1/category/181312/8358-1.htm" hidefocus="true" class="" :class="{ active2: hoverIndex === 0, off: hoverIndex !== 0 }" @mouseover="setHoverTab(0)">信息公告</a>
+                    <a href="/html1/category/2401/2776-1.htm" hidefocus="true" class="" :class="{ active2: hoverIndex === 1, off: hoverIndex !== 1 }" @mouseover="setHoverTab(1)">邮资票品发行信息</a>
+                    <a href="/html1/folder/181313/7289-1.htm" hidefocus="true" class="" :class="{ active2: hoverIndex === 2, off: hoverIndex !== 2 }" @mouseover="setHoverTab(2)">采购公告公示</a>
+                    <a href="/html1/category/181312/8361-1.htm" hidefocus="true" :class="{ active2: hoverIndex === 3, off: hoverIndex !== 3 }" @mouseover="setHoverTab(3)">预决算公开</a>
                 </div>
 
                 <div class="swiper-container1">
                     <div class="swiper-wrapper1 bd">
 
-                        <div class="swiper-slide1 cont" style="display: none;">
+                        <div class="swiper-slide1 cont" v-show="hoverIndex === 0">
                             <div class="content-slide">
                                 <ul class="newlist">
                                     <li><span id="ReportIDname"><a href="/html1/report/24091/3775-1.htm" target="_blank"
@@ -386,7 +386,7 @@
                                 </ul>
                             </div>
                         </div><!--{listing:1813129421}--><!--count:10/2147483647-->
-                        <div class="swiper-slide1 cont" style="display: none;">
+                        <div class="swiper-slide1 cont" v-show="hoverIndex === 1">
                             <div class="content-slide1">
 
                                 <ul class="newlist">
@@ -425,7 +425,7 @@
                                 </ul>
                             </div>
                         </div><!--{listing:1813129424}--><!--count:10/2147483647-->
-                        <div class="swiper-slide1 cont" style="display: none;">
+                        <div class="swiper-slide1 cont" v-show="hoverIndex === 2">
                             <div class="content-slide1">
 
                                 <ul class="newlist">
@@ -462,7 +462,7 @@
                                 </ul>
                             </div>
                         </div><!--{listing:1813129427}--><!--count:10/2147483647-->
-                        <div class="swiper-slide1 cont" style="display: block;">
+                        <div class="swiper-slide1 cont" v-show="hoverIndex === 3">
                             <div class="content-slide1">
 
                                 <ul class="newlist">
@@ -665,11 +665,15 @@ export default {
     data() {
         return {
             activeTab: 0, // 默认激活第一个tab
+            hoverIndex: 0
         };
     },
     methods: {
         setActiveTab(index) {
             this.activeTab = index;
+        },
+        setHoverTab(index) {
+            this.hoverIndex = index;
         },
         initFlexSlider() {
             $(".bd").flexslider({

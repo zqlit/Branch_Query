@@ -279,6 +279,7 @@ export default {
     data() {
         return {
             isMenuVisible: false,
+            ishover: false
         };
     },
     methods: {
