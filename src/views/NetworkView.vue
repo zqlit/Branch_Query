@@ -1,92 +1,101 @@
 <template>
     <div class="network-view">
-        <h1>网点查询</h1>
-        <div>
-            <form @submit.prevent="showAddr">
-                <label for="addr-show">您选择的是：
-                    <input type="text" v-model="submit.addrShow" id="addr-show" readonly>
-                </label>
-                <br />
+        <h2>网点查询</h2>
 
-                <!--省份选择-->
-                <select id="prov" v-model="current.prov" @change="showCity()">
-                    <option value="">-------------</option>
-                    <option v-for="(province, index) in provinces" :key="index" :value="province.name">{{ province.name
-                        }}</option>
-                </select>
+        <div style="height: 50px; background-color: #f2f2f2; margin-bottom: 20px;">
+            <form @submit.prevent="showAddr" style="display: flex; justify-content: space-between; height: 100%;">
+                <!-- 省份选择 -->
+                <div style="display: flex; align-items: center; height: 100%;">
+                    <select id="prov" v-model="current.prov" @change="showCity()">
+                        <option value="">-------------</option>
+                        <option v-for="(province, index) in provinces" :key="index" :value="province.name">
+                            {{ province.name }}
+                        </option>
+                    </select>
+                    <!-- 城市选择 -->
+                    <select id="city" v-model="current.city" @change="showCountry()">
+                        <option value="">-------------</option>
+                        <option v-for="(city, index) in currentCity" :key="index" :value="city.name">
+                            {{ city.name }}
+                        </option>
+                    </select>
+                    <!-- 县区选择 -->
+                    <select id="country" v-model="current.country" @change="selecCountry()">
+                        <option value="">-------------</option>
+                        <option v-for="(country, index) in currentCountry" :key="index" :value="country">
+                            {{ country }}
+                        </option>
+                    </select>
+                </div>
 
-                <!--城市选择-->
-                <select id="city" v-model="current.city" @change="showCountry()">
-                    <option value="">-------------</option>
-                    <option v-for="(city, index) in currentCity" :key="index" :value="city.name">{{ city.name }}
-                    </option>
-                </select>
+                <!-- 您选择的是 -->
+                <div style="display: flex; align-items: center;">
+                    <label for="addr-show" style="margin-left: auto; margin-right: 10px;">
+                        服务网点名称：
+                        <input type="text" v-model="submit.addrName">
+                    </label>
+                </div>
 
-                <!--县区选择-->
-                <select id="country" v-model="current.country" @change="selecCountry()">
-                    <option value="">-------------</option>
-                    <option v-for="(country, index) in currentCountry" :key="index" :value="country">{{ country }}
-                    </option>
-                </select>
-
-                <button type="submit" class="btn met1" :disabled="!canSubmit">确定</button>
+                <!-- 确定按钮 -->
+                <div style="display: flex; align-items: center;">
+                    <button type="submit" style="margin-left: auto;">查询</button>
+                </div>
             </form>
+        </div>
 
-            <!-- 表格 -->
-            <div class="container">
-                <table class="centered-table">
-                    <thead>
-                        <tr>
-                            <th>省</th>
-                            <th>市</th>
-                            <th>县</th>
-                            <th>服务网点名称</th>
-                            <th>邮编</th>
-                            <th>地址</th>
-                            <th>是否办理金融业务</th>
-                            <th>电话</th>
-                            <th>营业时间</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="(branch, index) in branches" :key="index"
-                            :class="{ 'even-row': index % 2 === 0, 'odd-row': index % 2 !== 0 }">
-                            <td>{{ branch.province }}</td>
-                            <td>{{ branch.city }}</td>
-                            <td>{{ branch.county }}</td>
-                            <td>{{ branch.name }}</td>
-                            <td>{{ branch.zipcode }}</td>
-                            <td>{{ branch.address }}</td>
-                            <td>{{ branch.financialServices ? '是' : '否' }}</td>
-                            <td>{{ branch.phone }}</td>
-                            <td>{{ branch.businessHours }}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+        <!-- 表格 -->
+        <div class="container">
+            <table class="centered-table">
+                <thead>
+                    <tr>
+                        <th>省</th>
+                        <th>市</th>
+                        <th>县</th>
+                        <th style="width: 216px;">服务网点名称</th>
+                        <th>邮编</th>
+                        <th>地址</th>
+                        <th style="width: 72px;">是否办理金融业务</th>
+                        <th>电话</th>
+                        <th>营业时间</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(branch, index) in filteredBranches" :key="index"
+                        :class="{ 'even-row': index % 2 === 0, 'odd-row': index % 2 !== 0 }">
+                        <td>{{ branch.province }}</td>
+                        <td>{{ branch.city }}</td>
+                        <td>{{ branch.county }}</td>
+                        <td>{{ branch.name }}</td>
+                        <td>{{ branch.zipcode }}</td>
+                        <td>{{ branch.address }}</td>
+                        <td>{{ branch.financialServices ? '是' : '否' }}</td>
+                        <td>{{ branch.phone }}</td>
+                        <td>{{ branch.businessHours }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-            <!-- 分页 -->
-            <div id='ali' style="text-align: center;">
-                <a href="#">1 </a>
-                <a href="#">2</a>
-                <a href="#">3</a>
-                <a href="#">4</a>
-                <a href="#">5</a>
-                <a href="#">6</a>
-                <a href="#">7</a>
-                <a href="#">8</a>
-                <a href="#">9</a>
-                <a href="#">10</a>
-                <a href="#">下一页</a>
-                <a href="#" id="CBLast">最后</a>
-                <span id='go'>
-                    <input size='4' maxlength='4' />
-                    <input type='button' value='GO'>
-                </span>
-            </div>
+        <!-- 分页 -->
+        <div id='ali' style="text-align: center;">
+            <a href="#">1 </a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+            <a href="#">6</a>
+            <a href="#">7</a>
+            <a href="#">8</a>
+            <a href="#">9</a>
+            <a href="#">10</a>
+            <a href="#">下一页</a>
+            <a href="#" id="CBLast">最后</a>
+            <span id='go'>
+                <input size='4' maxlength='4' />
+                <input type='button' value='GO'>
+            </span>
         </div>
     </div>
-
 </template>
 
 <script>
@@ -113,10 +122,10 @@ export default {
                     county: '大同区',
                     name: '和平邮政所',
                     zipcode: '163851',
-                    address: '黑龙江省大庆市大同区和平牧场和谐家园E2-3-101',
+                    address: '和平牧场和谐家园',
                     financialServices: false,
                     phone: '0459-6952248',
-                    businessHours: '08:30-12:00 12:00-12:30'
+                    businessHours: '08:30-12:00'
                 },
                 {
                     province: '广东省',
@@ -207,6 +216,8 @@ export default {
                     businessHours: '09:00-17:00'
                 }
             ]
+            ,
+            filteredBranches: []
         };
     },
     computed: {
@@ -235,31 +246,57 @@ export default {
         },
         showCountry() {
             this.submit.addrShow = '';
+
         },
         selecCountry() {
             this.submit.addrShow = `${this.current.prov}-${this.current.city}-${this.current.country}`;
+
         },
         showAddr() {
-            this.submit.addrShow = `${this.current.prov}-${this.current.city}-${this.current.country}`;
+            this.filterBranches();
+
+        },
+        filterBranches() {
+            let query = [this.current.prov, this.current.city, this.current.country];
+            let addrName = this.submit.addrName;
+
+            // 过滤逻辑
+            let filtered = this.branches.filter(branch => {
+                // 检查省市区是否匹配
+                if (query[0] && branch.province !== query[0]) return false;
+                if (query[1] && branch.city !== query[1]) return false;
+                if (query[2] && branch.county !== query[2]) return false;
+
+                // 如果有服务网点名称，则检查名称是否包含
+                if (addrName) {
+                    const regex = new RegExp(addrName, 'i'); // 创建不区分大小写的正则表达式
+                    return regex.test(branch.name);
+                }
+
+                return true;
+            });
+
+            this.filteredBranches = filtered;
         }
     },
     mounted() {
 
+        this.filterBranches(); // 初始化时过滤一次
     }
 };
 </script>
 
 <style scoped>
 .container {
-    display: flex;
+    /* display: flex; */
     justify-content: center;
     align-items: first baseline;
-    height: 50vh;
+    /* height: 50vh; */
     /* 占满整个视口高度 */
 }
 
 .centered-table {
-    width: 60%;
+    width: 100%;
     /* 表格宽度为70% */
     border-collapse: collapse;
     margin: 0 auto;
@@ -267,7 +304,8 @@ export default {
 }
 
 .centered-table th {
-    padding: 25px;
+    font-size: 16px;
+    padding: 10px;
     text-align: left;
     border-bottom: 2px solid #ddd;
     /* 添加下边框线 */
@@ -276,6 +314,9 @@ export default {
 }
 
 .centered-table td {
+    height: 40px;
+    padding: 5px 10px;
+    font-size: 15px;
     padding: 8px;
     text-align: left;
     border-bottom: 1px solid #ddd;
@@ -314,8 +355,10 @@ li#PageNum a,
     padding: 4px 9px;
     border: 1px solid #EAEAEE;
     border-radius: 4px;
-    text-decoration: none; /* 取消下划线 */
-    color: #333; /* 设置默认颜色 */
+    text-decoration: none;
+    /* 取消下划线 */
+    color: #333;
+    /* 设置默认颜色 */
 }
 
 li#PageNum span,
@@ -351,5 +394,14 @@ li#PageNum #go input[type="button"],
     font-size: 14px;
     color: #8E8E92;
     padding: 0px 8px;
+}
+
+
+h2 {
+    margin: 40px auto;
+    font-size: 20px;
+    text-align: center;
+    font-weight: 600;
+    color: #499967;
 }
 </style>

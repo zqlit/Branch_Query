@@ -49,11 +49,11 @@
             <nav>
               <ul>
                 <li class="active"><router-link to="/">首页页面</router-link></li>
-                <li><router-link to="/network">网点查询</router-link></li>
-                <li><router-link to="/login">登录页面</router-link></li>
-                <li><router-link to="/news">新闻中心</router-link></li>
-                <li><router-link to="/social">社会责任</router-link></li>
-                <li><router-link to="/company">企业文化</router-link></li>
+                <li :class="{active:ishover1}" @mouseover="ishover1 = true" @mouseleave="ishover1 =false"><router-link to="/network">网点查询</router-link></li>
+                <li :class="{active:ishover2}" @mouseover="ishover2 = true" @mouseleave="ishover2 =false"><router-link to="/login">登录页面</router-link></li>
+                <li :class="{active:ishover3}" @mouseover="ishover3 = true" @mouseleave="ishover3 =false"><router-link to="/news">新闻中心</router-link></li>
+                <li :class="{active:ishover4}" @mouseover="ishover4 = true" @mouseleave="ishover4 =false"><router-link to="/social">社会责任</router-link></li>
+                <li :class="{active:ishover5}" @mouseover="ishover5 = true" @mouseleave="ishover5 =false"><router-link to="/company">企业文化</router-link></li>
               </ul>
             </nav>
           </div>
@@ -68,7 +68,7 @@
         <router-view />
       </div>
     </div>
-    <div class="footer-father">
+    <div class="footer-father" v-show="showHeader">
       <div class="footer-main">
         <FooterView />
       </div>
@@ -83,7 +83,12 @@ export default {
   data() {
     return {
       showHeader: true,
-      showFoot: true
+      showFoot: true,
+      ishover1: false,
+      ishover2: false,
+      ishover3: false,
+      ishover4: false,
+      ishover5: false
     };
   },
   methods: {
@@ -340,11 +345,6 @@ nav {
   position: absolute;
   bottom: -12px;
   left: 38%;
-}
-
-.nav ul li:hover a {
-  color: #18AE66;
-  position: relative;
 }
 
 .active {

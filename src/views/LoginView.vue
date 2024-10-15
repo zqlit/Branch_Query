@@ -4,7 +4,7 @@
         <header>
             <div>
                 <ul id="uLeft" class="post-wrapper">
-                    <li><a href="https://mall.11185.cn/portal"> <i class="icon-small"></i> <span>返回首页</span>
+                    <li><a href="/"> <i class="icon-small"></i> <span>返回首页</span>
                         </a></li>
                     <li style="z-index: 9999; position: relative;"><span id="HelpSpan" class="dropdownBtn"><a
                                 href="https://mall.11185.cn/portal/#/productIntroduce">帮助中心</a></span>
@@ -279,6 +279,7 @@ export default {
     data() {
         return {
             isMenuVisible: false,
+            ishover: false
         };
     },
     methods: {
