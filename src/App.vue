@@ -68,7 +68,7 @@
         <router-view />
       </div>
     </div>
-    <div class="footer-father">
+    <div class="footer-father" v-show="showHeader">
       <div class="footer-main">
         <FooterView />
       </div>
