@@ -379,10 +379,15 @@ section {
     font-size: 12px;
 }
 
+.tpauth .zhuce {
+    text-align: left;
+}
+
 .zhuce a {
     position: static;
     margin-right: 7px;
     /* color: #666; */
+
 }
 
 .tpauth {
@@ -396,7 +401,7 @@ section {
 }
 
 .thirdparty {
-    position: static;
+    /* position: static; */
     color: #666;
     margin-right: 8px;
     padding-right: 8px;
@@ -415,15 +420,17 @@ section {
 /* 尾部样式 */
 tr {
     display: table-row;
-    vertical-align: inherit;
+    /* vertical-align: inherit; */
     unicode-bidi: isolate;
     border-color: inherit;
 }
 
 td {
-    display: table-cell;
+    /* display: table-cell;
     vertical-align: inherit;
     unicode-bidi: isolate;
+    max-height: 100px;
+    overflow: hidden; */
 }
 
 tbody {
@@ -473,6 +480,9 @@ footer td {
     font-size: 14px;
     color: #8E8E92;
     line-height: 14px;
+    position: relative;
+    /* 启用相对定位 */
+    top: -7px;
 }
 
 
