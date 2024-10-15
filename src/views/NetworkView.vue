@@ -1,90 +1,108 @@
 <template>
     <div class="network-view">
-        <h1>网点查询</h1>
-        <div>
-            <form @submit.prevent="showAddr">
-                <label for="addr-show">您选择的是：
-                    <input type="text" v-model="submit.addrShow" id="addr-show" readonly>
-                </label>
-                <br />
+        <h2>
 
-                <!--省份选择-->
-                <select id="prov" v-model="current.prov" @change="showCity()">
-                    <option value="">-------------</option>
-                    <option v-for="(province, index) in provinces" :key="index" :value="province.name">{{ province.name
-                        }}</option>
-                </select>
+            网点查询
 
-                <!--城市选择-->
-                <select id="city" v-model="current.city" @change="showCountry()">
-                    <option value="">-------------</option>
-                    <option v-for="(city, index) in currentCity" :key="index" :value="city.name">{{ city.name }}
-                    </option>
-                </select>
+        </h2>
 
-                <!--县区选择-->
-                <select id="country" v-model="current.country" @change="selecCountry()">
-                    <option value="">-------------</option>
-                    <option v-for="(country, index) in currentCountry" :key="index" :value="country">{{ country }}
-                    </option>
-                </select>
+        <div style="height: 50px; background-color: #f2f2f2; margin-bottom: 20px;">
+            <form @submit.prevent="showAddr" style="display: flex; justify-content: space-between; height: 100%;">
+                <!-- 省份选择 -->
+                <div style="display: flex; align-items: center; height: 100%;">
+                    <select id="prov" v-model="current.prov" @change="showCity()">
+                        <option value="">-------------</option>
+                        <option v-for="(province, index) in provinces" :key="index" :value="province.name">
+                            {{ province.name }}
+                        </option>
+                    </select>
+                    <!-- 城市选择 -->
+                    <select id="city" v-model="current.city" @change="showCountry()">
+                        <option value="">-------------</option>
+                        <option v-for="(city, index) in currentCity" :key="index" :value="city.name">
+                            {{ city.name }}
+                        </option>
+                    </select>
+                    <!-- 县区选择 -->
+                    <select id="country" v-model="current.country" @change="selecCountry()">
+                        <option value="">-------------</option>
+                        <option v-for="(country, index) in currentCountry" :key="index" :value="country">
+                            {{ country }}
+                        </option>
+                    </select>
+                </div>
 
-                <button type="submit" class="btn met1" :disabled="!canSubmit">确定</button>
+                <!-- 您选择的是 -->
+                <div style="display: flex; align-items: center;">
+                    <label for="addr-show" style="margin-left: auto; margin-right: 10px;">
+                        服务网点名称：
+                        <input type="text" v-model="submit.addrShow" id="addr-show" readonly>
+                    </label>
+                </div>
+
+                <!-- 确定按钮 -->
+                <div style="display: flex; align-items: center;">
+                    <button type="submit" class="btn met1" :disabled="!canSubmit" style="margin-left: auto;">查询</button>
+                </div>
             </form>
-
-            <!-- 表格 -->
-            <div class="container">
-                <table class="centered-table">
-                    <thead>
-                        <tr>
-                            <th>省</th>
-                            <th>市</th>
-                            <th>县</th>
-                            <th>服务网点名称</th>
-                            <th>邮编</th>
-                            <th>地址</th>
-                            <th>是否办理金融业务</th>
-                            <th>电话</th>
-                            <th>营业时间</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="(branch, index) in branches" :key="index"
-                            :class="{ 'even-row': index % 2 === 0, 'odd-row': index % 2 !== 0 }">
-                            <td>{{ branch.province }}</td>
-                            <td>{{ branch.city }}</td>
-                            <td>{{ branch.county }}</td>
-                            <td>{{ branch.name }}</td>
-                            <td>{{ branch.zipcode }}</td>
-                            <td>{{ branch.address }}</td>
-                            <td>{{ branch.financialServices ? '是' : '否' }}</td>
-                            <td>{{ branch.phone }}</td>
-                            <td>{{ branch.businessHours }}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- 分页 -->
-            <div id='ali' style="text-align: center;">
-                <a href="#">1 </a>
-                <a href="#">2</a>
-                <a href="#">3</a>
-                <a href="#">4</a>
-                <a href="#">5</a>
-                <a href="#">6</a>
-                <a href="#">7</a>
-                <a href="#">8</a>
-                <a href="#">9</a>
-                <a href="#">10</a>
-                <a href="#">下一页</a>
-                <a href="#" id="CBLast">最后</a>
-                <span id='go'>
-                    <input size='4' maxlength='4' />
-                    <input type='button' value='GO'>
-                </span>
-            </div>
         </div>
+
+
+
+
+        <!-- 表格 -->
+        <div class="container">
+            <table class="centered-table">
+                <thead>
+                    <tr>
+                        <th>省</th>
+                        <th>市</th>
+                        <th>县</th>
+                        <th style="width: 216px;">服务网点名称</th>
+                        <th>邮编</th>
+                        <th>地址</th>
+                        <th style="width: 72px;">是否办理金融业务</th>
+                        <th>电话</th>
+                        <th>营业时间</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(branch, index) in branches" :key="index"
+                        :class="{ 'even-row': index % 2 === 0, 'odd-row': index % 2 !== 0 }">
+                        <td>{{ branch.province }}</td>
+                        <td>{{ branch.city }}</td>
+                        <td>{{ branch.county }}</td>
+                        <td>{{ branch.name }}</td>
+                        <td>{{ branch.zipcode }}</td>
+                        <td>{{ branch.address }}</td>
+                        <td>{{ branch.financialServices ? '是' : '否' }}</td>
+                        <td>{{ branch.phone }}</td>
+                        <td>{{ branch.businessHours }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 分页 -->
+        <div id='ali' style="text-align: center;">
+            <a href="#">1 </a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+            <a href="#">6</a>
+            <a href="#">7</a>
+            <a href="#">8</a>
+            <a href="#">9</a>
+            <a href="#">10</a>
+            <a href="#">下一页</a>
+            <a href="#" id="CBLast">最后</a>
+            <span id='go'>
+                <input size='4' maxlength='4' />
+                <input type='button' value='GO'>
+            </span>
+        </div>
+    </div>
     </div>
 
 </template>
@@ -113,10 +131,10 @@ export default {
                     county: '大同区',
                     name: '和平邮政所',
                     zipcode: '163851',
-                    address: '黑龙江省大庆市大同区和平牧场和谐家园E2-3-101',
+                    address: '和平牧场和谐家园',
                     financialServices: false,
                     phone: '0459-6952248',
-                    businessHours: '08:30-12:00 12:00-12:30'
+                    businessHours: '08:30-12:00'
                 },
                 {
                     province: '广东省',
@@ -251,15 +269,15 @@ export default {
 
 <style scoped>
 .container {
-    display: flex;
+    /* display: flex; */
     justify-content: center;
     align-items: first baseline;
-    height: 50vh;
+    /* height: 50vh; */
     /* 占满整个视口高度 */
 }
 
 .centered-table {
-    width: 60%;
+    width: 100%;
     /* 表格宽度为70% */
     border-collapse: collapse;
     margin: 0 auto;
@@ -267,7 +285,8 @@ export default {
 }
 
 .centered-table th {
-    padding: 25px;
+    font-size: 16px;
+    padding: 10px;
     text-align: left;
     border-bottom: 2px solid #ddd;
     /* 添加下边框线 */
@@ -276,6 +295,9 @@ export default {
 }
 
 .centered-table td {
+    height: 40px;
+    padding: 5px 10px;
+    font-size: 15px;
     padding: 8px;
     text-align: left;
     border-bottom: 1px solid #ddd;
@@ -314,8 +336,10 @@ li#PageNum a,
     padding: 4px 9px;
     border: 1px solid #EAEAEE;
     border-radius: 4px;
-    text-decoration: none; /* 取消下划线 */
-    color: #333; /* 设置默认颜色 */
+    text-decoration: none;
+    /* 取消下划线 */
+    color: #333;
+    /* 设置默认颜色 */
 }
 
 li#PageNum span,
@@ -351,5 +375,14 @@ li#PageNum #go input[type="button"],
     font-size: 14px;
     color: #8E8E92;
     padding: 0px 8px;
+}
+
+
+h2 {
+    margin: 40px auto;
+    font-size: 20px;
+    text-align: center;
+    font-weight: 600;
+    color: #499967;
 }
 </style>
