@@ -67,13 +67,12 @@
       <div class="content" :class="contentClass">
       <router-view />
       </div>
-      <div class="footer">
-        <div class="footer-main">
-          <FooterView />
-        </div>
-      </div>
     </div>
-   
+    <div class="footer-father" style="position: fixed; bottom: 0; width: 100%;">
+      <div class="footer-main">
+        <FooterView />
+      </div>
+      </div>
   </div>
 </template>
 
@@ -376,5 +375,10 @@ li{
 
 .content-full-width {
   width: 100%;
+}
+
+.footer-father {
+  width: 100%;
+  background-color: #F6F6FA;
 }
 </style>

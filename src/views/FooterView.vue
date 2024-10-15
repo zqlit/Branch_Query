@@ -84,7 +84,7 @@ img {
     vertical-align: middle;
 }
 
-#Footer {
+/* #Footer {
     background: #F6F6FA;
-}
+} */
 </style>
