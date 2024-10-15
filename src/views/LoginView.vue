@@ -379,10 +379,15 @@ section {
     font-size: 12px;
 }
 
+.tpauth .zhuce {
+    text-align: left;
+}
+
 .zhuce a {
     position: static;
     margin-right: 7px;
     /* color: #666; */
+
 }
 
 .tpauth {
@@ -396,7 +401,7 @@ section {
 }
 
 .thirdparty {
-    position: static;
+    /* position: static; */
     color: #666;
     margin-right: 8px;
     padding-right: 8px;
