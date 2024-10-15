@@ -1,5 +1,130 @@
 <template>
     <div class="login-view">
+        <!-- 头部 -->
+        <header>
+            <div>
+                <ul id="uLeft" class="post-wrapper">
+                    <li><a href="https://mall.11185.cn/portal"> <i class="icon-small"></i> <span>返回首页</span>
+                        </a></li>
+                    <li style="z-index: 9999; position: relative;"><span id="HelpSpan" class="dropdownBtn"><a
+                                href="https://mall.11185.cn/portal/#/productIntroduce">帮助中心</a></span>
+                        <ul id="HelpUL" class="dropdownWrapper" style="width: 290px; display: none;">
+                            <li class="dropdownWrapli"><a target="_blank" class="WrapperPane"
+                                    href="https://mall.11185.cn/portal/#/HnewUserRegistration">新手入门</a>
+                            </li>
+                            <li class="dropdownWrapli"><a target="_blank" class="WrapperPane"
+                                    href="https://mall.11185.cn/portal/#/HpayGreetingCard">支付方式</a>
+                            </li>
+                            <li class="dropdownWrapli"><a target="_blank" class="WrapperPane"
+                                    href="https://mall.11185.cn/portal/#/HFlightDelay">注意事项</a></li>
+                            <li class="dropdownWrapli"><a target="_blank" class="WrapperPane"
+                                    href="https://mall.11185.cn/portal/#/HdmBusinessLetter">配送方式</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li style="z-index: 9999; position: relative;"><span id="CustomerPane" class="dropdownBtn"><a
+                                href="https://mall.11185.cn/portal/#/productIntroduce">大客户中心</a></span>
+                        <ul id="CustomerUL" class="dropdownWrapper" style="display: none;">
+                            <li class="dropdownWrapli"><a target="_blank" class="WrapperPane"
+                                    href="https://my.ems.com.cn/">新一代寄递平台</a>
+                            </li>
+                            <li class="dropdownWrapli"><a target="_blank" class="WrapperPane"
+                                    href="http://211.156.200.95:8081/">包裹代投自提系统</a>
+                            </li>
+                        </ul>
+                        <!-- <script type="text/javascript">
+						var vCustomerPane = document.getElementById("CustomerPane");
+						var vCustomerUL = document.getElementById("CustomerUL");
+						vCustomerPane.onmouseover = function() {
+							vCustomerUL.style.display = "block";
+						}
+						vCustomerPane.onmouseout = function() {
+							vCustomerUL.style.display = "none";
+						}
+						vCustomerUL.onmouseover = function() {
+							vCustomerUL.style.display = "block";
+						}
+						vCustomerUL.onmouseout = function() {
+							vCustomerUL.style.display = "none";
+						}
+					</script> -->
+                    </li>
+                </ul>
+                <ul id="uRight">
+                    <li id="__id_div_login"><a href="javascript:gotoOnway('https://passport.11185.cn/cas/login');">请登录</a>
+                    </li>
+                    <li id="__id_div_user" style="display:none;font-weight: 600;">
+                        <span id="__id_span_user"></span>&nbsp;&nbsp;
+                        <a
+                            href="javascript:self.location.href=cpsso.getLogoutUrl('https://passport.11185.cn/cas/login');">退出</a>
+                    </li>
+                    <li>|</li>
+                    <li><a href="javascript:gotoOnway('https://passport.11185.cn/cas/register');">快速注册</a></li>
+                    <li>|</li>
+                    <li style="z-index: 9999; position: relative;">
+                        <span><i class="icon-small icon-phone"></i><a id="mobilePane" href="javascript:;">手机版</a></span>
+                        <ul id="mobileUL" class="dropdownPhone" style="display: none;">
+                            <li class="post_phone"><i class="el-icon-caret-top"></i></li>
+                            <li class="post_phone_top">
+                                <div class="post_phone_top_left">
+                                    <img src="https://passport.11185.cn/cas/images/appstore.png" alt="">
+                                </div>
+                                <div class="post_phone_top_right">
+                                    <ul>
+                                        <li class="post_phone_liOne">中国邮政APP</li>
+                                        <li class="post_phone_liTwo">
+                                            <a target="_blank"
+                                                href="https://a.app.qq.com/o/simple.jsp?pkgname=com.wisentsoft.chinapost.android">扫一扫下载</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="post_phone_bottom">
+                                <div class="post_phone_top_left">
+                                    <img src="https://passport.11185.cn/cas/images/weixin.png" alt="">
+                                </div>
+                                <div class="post_phone_top_right">
+                                    <ul>
+                                        <li class="post_phone_liOne">中国邮政微邮局</li>
+                                        <li class="post_phone_liTwo">扫一扫关注</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="post_phone_top">
+                                <div class="post_phone_top_left">
+                                    <img src="https://passport.11185.cn/cas/images/weixinmini.png" alt="">
+                                </div>
+                                <div class="post_phone_top_right">
+                                    <ul>
+                                        <li class="post_phone_liOne">中国邮政商城</li>
+                                        <li class="post_phone_liTwo">扫一扫逛商城</li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                        <!-- <script type="text/javascript">
+						var vMobilePane = document.getElementById("mobilePane");
+						var vMobileUL = document.getElementById("mobileUL");
+						vMobilePane.onmouseover = function() {
+							vMobileUL.style.display = "block";
+						}
+						vMobilePane.onmouseout = function() {
+							vMobileUL.style.display = "none";
+						}
+						vMobileUL.onmouseover = function() {
+							vMobileUL.style.display = "block";
+						}
+						vMobileUL.onmouseout = function() {
+							vMobileUL.style.display = "none";
+						}				
+					</script> -->
+                    </li>
+                </ul>
+            </div>
+        </header>
+
+
         <!-- 身体 -->
         <div class="">
             <section>
@@ -290,11 +415,99 @@ a {
     color: #333;
 }
 
+/* 头部 */
+header {
+    background: #F6F6FA;
+    display: block;
+    unicode-bidi: isolate;
+}
+
+header div {
+    height: 30px;
+    line-height: 30px;
+    width: 980px;
+    margin: 0 auto;
+    font-size: 12px;
+    color: #8E8E92;
+}
+
+ul#uLeft {
+    float: left;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul#uLeft li,
+ul#uRight li {
+    float: left;
+    padding: 0px 10px;
+}
+
+header ul a {
+    color: #8E8E92;
+}
+
+i.icon-small {
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    position: relative;
+    top: 7px;
+    border: none;
+    padding-top: 0px;
+}
+
+i {
+    vertical-align: top;
+    text-align: center;
+    width: 40px;
+    height: 28px;
+    border: 1px solid #e6e6e6;
+    border-right: 0;
+    display: inline-block;
+    background: #f8f8f8;
+    padding-top: 10px;
+}
+
+ul#uRight {
+    float: right;
+}
+
+.icon-phone {
+    background: url(../assets/phone11x12.png) no-repeat;
+    background-size: contain;
+    width: 14px;
+    height: 12px;
+    top: 2px;
+}
+
 .content {
     overflow: hidden;
     width: 100%;
     background: #fff;
     /* border-bottom: 1px solid #E5E5E5; */
+}
+
+@media (min-width: 1800px) {
+    .content .head {
+        width: 1200px;
+        margin: 0 auto;
+        padding: 28px 0 20px 0;
+        position: relative;
+    }
+}
+
+@media (min-width: 1200px) {
+    .content .head {
+        width: 980px;
+        margin: 0 auto;
+        padding: 28px 0 20px 0;
+        position: relative;
+    }
 }
 
 /*H2里放的二级首页名称*/
