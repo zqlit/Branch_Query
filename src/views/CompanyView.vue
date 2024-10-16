@@ -6,11 +6,11 @@
                     <div class="fgj">企业文化</div>
                     <div class="about_nav">
                         <ul>
-                            <li @click="shouMe(1)"><span class="tu"><span><a href='#' target='_self' title=""><img
+                            <li @click="shouMe(1)" :class="{clickmeBlack:active1}"><span class="tu"><span><a href='#' target='_self' title=""><img
                                                 src='../assets/2012680033.png' alt='企业文化纲要' /></a></span></span><span
                                     class="tit"><span>企业文化纲要</span></span></li>
 
-                            <li @click="shouMe(2)"><span class="tu"><span><a href='#' target='_self' title=""><img
+                            <li @click="shouMe(2)" :class="{clickmeBlack:active2}"><span class="tu"><span><a href='#' target='_self' title=""><img
                                                 src='../assets/2012680032.png' alt='企业文化建设' /></a></span></span><span
                                     class="tit"><span id="NodeTitle"><a href='#' target='_self'
                                             title="企业文化建设">企业文化建设</a></span></span></li>
@@ -157,13 +157,25 @@ export default {
     data() {
         return {
             nowNum: 1,
-            addBlack: false
+            addBlack: false,
+            active1: true,
+            active2: false,
         };
     },
     methods: {
         shouMe(value) {
-            this.nowNum = value;
-            this.addBlack = !this.addBlack;
+            switch (value) {
+                case 1:
+                    this.nowNum = 1;
+                    this.active1 = true;
+                    this.active2 = false;
+                    break;
+                case 2:
+                    this.nowNum = 2;
+                    this.active1 = false;
+                    this.active2 = true;
+                    break;
+            }
         }
     },
     computed: {
@@ -196,9 +208,10 @@ body {
     float: left;
 }
 
-/* .about_nav li:hover {
+.clickmeBlack {
     font-weight: 600;
-} */
+    font-size: 18px;
+}
 
 .fgj {
     display: block;
