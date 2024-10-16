@@ -29,13 +29,13 @@
 1. 克隆项目到本地：
 
     ```bash
-    git clone https://github.com/yourusername/your-repo-name.git
+    git clone https://github.com/zqlit/Branch_Query.git
     ```
 
 2. 进入项目目录：
 
     ```bash
-    cd your-repo-name
+    cd Branch_Query
     ```
 
 3. 安装依赖：
@@ -69,7 +69,7 @@
 ## 目录结构
 
 ```plaintext
-your-repo-name/
+Branch_Query/
 ├── public/
 │   ├── favicon.ico
 │   └── index.html
