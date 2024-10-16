@@ -48,8 +48,7 @@
                     <li><a href="https://passport.11185.cn/cas/register?service=https%3A%2F%2Fmall.11185.cn">快速注册</a>
                     </li>
                     <li>|</li>
-                    <li style="z-index: 9999; position: relative;" id="mobilePane" @mouseover="showMenu"
-                        @mouseout="hideMenu">
+                    <li style="z-index: 9999; position: relative;" id="mobilePane">
                         <span><i class="icon-small icon-phone"></i><a id="mobilePane" href="javascript:;">手机版</a></span>
                     </li>
                 </ul>
@@ -78,7 +77,7 @@
                                     </div>
                                 </div>
                                 <div style="margin: 10px 30px 55px 5px;">
-                                    <a href="javascript:swithAccountLoginWay('code');" class="login-way">短信登录</a>
+                                    <a href="#" class="login-way">短信登录</a>
                                     <div id="code-line"
                                         style="width: 48px; height: 4px; background: #18AE66; margin: 8px 18px; display: none;">
                                     </div>
