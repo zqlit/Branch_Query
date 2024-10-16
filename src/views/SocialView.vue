@@ -32,8 +32,8 @@
         <div id="Content3">
             <div class="san_nav">
                 <ul>
-                    <li @click="shouMe(1)"><span id="CurrentlyNode" :class="{active:true}">服务风采</span></li>
-                    <li @click="shouMe(2)" :class="{active:true}"><span id="NodeTitle"><a href='#' target='_self' title="法律法规" :class="{active:true}">法律法规</a></span>
+                    <li @click="shouMe(1)"><span id="CurrentlyNode" :class="{active:active1}">服务风采</span></li>
+                    <li @click="shouMe(2)"><span id="CurrentlyNode" :class="{active:active2}"><a href='#' target='_self' title="法律法规">法律法规</a></span>
                     </li>
                 </ul>
             </div>
@@ -190,13 +190,25 @@ export default {
     data() {
         return {
             nowNum: 1,
-            addBlack: false
+            addBlack: false,
+            active1: true,
+            active2: false,
         };
     },
     methods: {
         shouMe(value) {
-            this.nowNum = value;
-            this.addBlack = !this.addBlack;
+            switch (value) {
+                case 1:
+                    this.nowNum = 1;
+                    this.active1 = true;
+                    this.active2 = false;
+                    break;
+                case 2:
+                    this.nowNum = 2;
+                    this.active1 = false;
+                    this.active2 = true;
+                    break;
+            }
         }
     },
     computed: {
@@ -582,7 +594,6 @@ li#PageNum,
 .san_nav #CurrentlyNode, .san_nav #CurrentlyNode {
     font-size: 20px;
     color: #2E2E30;
-    border-bottom: 4px solid #009966;
     font-weight: bold;
     line-height: 24px;
     padding-bottom: 7px;
