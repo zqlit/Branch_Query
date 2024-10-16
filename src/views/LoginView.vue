@@ -98,16 +98,17 @@
                                 <div class="login-input">
                                     <img src="https://passport.11185.cn/cas/images/yhm@2x2.png"
                                         style="vertical-align: middle;float: left;">
-                                    <input type="text" tabindex="1" id="username" placeholder="用户名/手机号/邮箱">
+                                    <input type="text" tabindex="1" id="username" placeholder="用户名/手机号/邮箱"
+                                        v-model="username">
                                 </div>
                                 <div class="login-input">
                                     <img src="https://passport.11185.cn/cas/images/mm@2x2.png"
                                         style="vertical-align: middle;float: left;">
-                                    <input type="password" tabindex="2" id="password" placeholder="密码">
+                                    <input type="password" tabindex="2" id="password" placeholder="密码" v-model="password">
                                 </div>
                                 <div id="slide_block" style="width:240px;margin:0px auto 15px;display:none;"></div>
 
-                                <button id="upwLoginButton" tabindex="4" onclick="upwLoginKks();">立即登录</button>
+                                <button id="upwLoginButton" tabindex="4" @click="login">立即登录</button>
                                 <p class="zhuce" style="margin: 20px 16px 10px 0px">
 
 
@@ -139,7 +140,7 @@
                                         onclick="openAgreements('中国邮政会员注册与服务协议','agreements')">《中国邮政会员注册与服务协议》</span>
                                 </div>
                                 <div>
-                                    <button id="smsLoginButton" tabindex="4" onclick="smsVerifyLogin();">立即登录</button>
+                                    <button id="smsLoginButton" tabindex="4" @click="login">立即登录</button>
                                 </div>
                                 <p class="zhuce" style="margin: 20px 16px 10px 0px">
 
@@ -279,8 +280,15 @@ export default {
     data() {
         return {
             isMenuVisible: false,
-            ishover: false
+            ishover: false,
+            username: '',
+            password: ''
         };
+    },
+    mounted() {
+        if (localStorage.getItem('isAuthenticated') == 'true') {
+            localStorage.removeItem('isAuthenticated');
+        }
     },
     methods: {
         showMenu() {
@@ -288,6 +296,18 @@ export default {
         },
         hideMenu() {
             this.isMenuVisible = false;
+        },
+        login() {
+            // 假设账号为 'admin'，密码为 '123'
+            if (this.username == 'admin' && this.password == '123') {
+                alert('登录成功!');
+                // 将登录状态保存在 localStorage 中
+                localStorage.setItem('isAuthenticated', 'true');
+                // 登录成功后跳转到首页或其他页面
+                this.$router.push('/');
+            } else {
+                alert('账号或密码错误');
+            }
         }
 
     }
@@ -338,7 +358,7 @@ button:hover {
 }
 
 button:active {
-    background-color: #1795bb;
+    background-color: #18AE66;
     box-shadow: 0 5px #666;
     transform: translateY(4px);
 }
@@ -454,7 +474,7 @@ ul#uRight li {
 
 .el-icon-caret-top {
     font-family: element-icons !important;
-    speak: none;
+    /* speak: none; */
     font-style: normal;
     font-weight: 400;
     font-variant: normal;
@@ -640,13 +660,13 @@ tr {
     border-color: inherit;
 }
 
-td {
-    /* display: table-cell;
+/* td {
+    display: table-cell;
     vertical-align: inherit;
     unicode-bidi: isolate;
     max-height: 100px;
-    overflow: hidden; */
-}
+    overflow: hidden;
+} */
 
 tbody {
     display: table-row-group;
@@ -657,17 +677,6 @@ tbody {
 
 table {
     display: table;
-    /* border-collapse: separate; */
-    /* box-sizing: border-box; */
-    /* text-indent: initial; */
-    /* unicode-bidi: isolate; */
-    /* border-spacing: 2px; */
-    /* border-color: gray; */
-    /* border-collapse: separate; */
-    /* text-indent: initial; */
-    /* border-spacing: 2px; */
-    /* table-layout: fixed; */
-    /* word-break: break-all; */
 }
 
 footer {
