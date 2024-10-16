@@ -45,7 +45,8 @@
                             href="javascript:self.location.href=cpsso.getLogoutUrl('https://passport.11185.cn/cas/login');">退出</a>
                     </li>
                     <li>|</li>
-                    <li><a href="https://passport.11185.cn/cas/register?service=https%3A%2F%2Fmall.11185.cn">快速注册</a></li>
+                    <li><a href="https://passport.11185.cn/cas/register?service=https%3A%2F%2Fmall.11185.cn">快速注册</a>
+                    </li>
                     <li>|</li>
                     <li style="z-index: 9999; position: relative;" id="mobilePane" @mouseover="showMenu"
                         @mouseout="hideMenu">
@@ -84,7 +85,8 @@
                                 </div>
                                 <div>
                                     <a style="color:#fff;" href="javascript:pane_switch('code_login');"><img
-                                            src="https://passport.11185.cn/cas/images/ewm.png" height="74" width="74"></a>
+                                            src="https://passport.11185.cn/cas/images/ewm.png" height="74"
+                                            width="74"></a>
                                 </div>
                             </div>
                             <div id="upwVerify" class="register-wrap">
@@ -104,7 +106,8 @@
                                 <div class="login-input">
                                     <img src="https://passport.11185.cn/cas/images/mm@2x2.png"
                                         style="vertical-align: middle;float: left;">
-                                    <input type="password" tabindex="2" id="password" placeholder="密码" v-model="password">
+                                    <input type="password" tabindex="2" id="password" placeholder="密码"
+                                        v-model="password">
                                 </div>
                                 <div id="slide_block" style="width:240px;margin:0px auto 15px;display:none;"></div>
 
@@ -128,8 +131,8 @@
                                     <img src="https://passport.11185.cn/cas/images/mm@2x2.png"
                                         style="vertical-align: middle;float: left;"><input type="text" maxlength="6"
                                         tabindex="3" readonly="readonly" id="input_smscode"
-                                        style="width:100px;vertical-align:top;border-right:0px;" placeholder="短信验证码"><button
-                                        id="link_get_code_sms"
+                                        style="width:100px;vertical-align:top;border-right:0px;"
+                                        placeholder="短信验证码"><button id="link_get_code_sms"
                                         style="height: 32px; width: 90px; line-height: 32px; float:none; margin-top: 0px;"
                                         onclick="sendSmsCodeKks()">获取手机短信</button>
 
@@ -224,13 +227,17 @@
             <footer>
                 <table width="100%" height="71px">
                     <tr>
-                        <td rowspan="2" class="tbimg"><img src="https://passport.11185.cn/cas/images/v2/footer3.png" /></td>
+                        <td rowspan="2" class="tbimg"><img src="https://passport.11185.cn/cas/images/v2/footer3.png" />
+                        </td>
                         <td class="tbtxt">品质保障</td>
-                        <td rowspan="2" class="tbimg"><img src="https://passport.11185.cn/cas/images/v2/footer4.png" /></td>
+                        <td rowspan="2" class="tbimg"><img src="https://passport.11185.cn/cas/images/v2/footer4.png" />
+                        </td>
                         <td class="tbtxt">特色服务</td>
-                        <td rowspan="2" class="tbimg"><img src="https://passport.11185.cn/cas/images/v2/footer2.png" /></td>
+                        <td rowspan="2" class="tbimg"><img src="https://passport.11185.cn/cas/images/v2/footer2.png" />
+                        </td>
                         <td class="tbtxt">集团文化</td>
-                        <td rowspan="2" class="tbimg"><img src="https://passport.11185.cn/cas/images/v2/footer1.png" /></td>
+                        <td rowspan="2" class="tbimg"><img src="https://passport.11185.cn/cas/images/v2/footer1.png" />
+                        </td>
                         <td class="tbtxt">覆盖全乡</td>
                     </tr>
                     <tr height="" class="tr_2">
@@ -300,13 +307,19 @@ export default {
         login() {
             // 假设账号为 'admin'，密码为 '123'
             if (this.username == 'admin' && this.password == '123') {
-                alert('登录成功!');
+                Qmsg.success({
+                    autoClose: true,
+                    content: "登录成功!"
+                })
                 // 将登录状态保存在 localStorage 中
                 localStorage.setItem('isAuthenticated', 'true');
                 // 登录成功后跳转到首页或其他页面
                 this.$router.push('/');
             } else {
-                alert('账号或密码错误');
+                Qmsg.error({
+                    autoClose: true,
+                    content: "账号或密码错误，请检查后重试"
+                })
             }
         }
 
