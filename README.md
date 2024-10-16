@@ -101,6 +101,7 @@ your-repo-name/
 ├── package.json
 ├── README.md
 └── vue.config.js
+```
 
 ## 贡献指南
 
